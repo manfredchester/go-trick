@@ -2,13 +2,31 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
-func main() {
+func recuse(arr []string, str string) map[string]string {
+	strs := strings.SplitAfter(str, "failed=")
+	fmt.Println(strs)
+	result := make(map[string]string, 0)
+	for k, v := range strs {
+		for _, vv := range arr {
+			if strings.Contains(v, vv) {
+				result[vv] = strs[k+1][:1]
+				break
+			}
+		}
+	}
+	fmt.Println(result)
+	return result
+}
 
-	makeBuff()
-	deferCall()
+func main() {
+	// makeBuff()
+	// recuse([]string{"h1", "h2", "h3"}, "dsadh1:kihifailed=1kghyhjkdffyjh2:khjklhonefailed=3")
+
+	// deferCall()
 	<-time.After(time.Second * 10)
 }
 
@@ -17,6 +35,9 @@ func deferCall() {
 		fmt.Println("打印前")
 	}()
 	defer func() {
+		if e := recover(); e != nil {
+			fmt.Println(e)
+		}
 		fmt.Println("打印中")
 	}()
 	defer func() {

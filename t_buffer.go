@@ -53,8 +53,7 @@ func makeBuff() {
 
 	fmt.Println("\n\n\n\n===============case6=============Read方法，返回一个容器p，读完后p就满了，缓冲器相应的减少。")
 	buff := bytes.NewBuffer([]byte("test"))
-	buff.Write([]byte(" done"))
-
+	buff.Write([]byte("dsadh1:kihifailed=1kghyhjkdffyjh2:khjklhonefailed=3"))
 	s3 := make([]byte, 2)
 	buff.Read(s3)
 	fmt.Println(buff.String())
@@ -66,8 +65,8 @@ func makeBuff() {
 
 	fmt.Println("\n\n\n\n===============case7=============ReadString方法||ReadBytes方法，需要一个byte作为分隔符，读的时候从缓冲器里找出第一个出现的分隔符，缓冲器头部开始到分隔符之间的byte返回")
 	buff = bytes.NewBuffer([]byte("test"))
-	buff.Write([]byte(" done"))
-	newbuff, _ := buff.ReadBytes('d')
+	buff.Write([]byte(" done1one2"))
+	newbuff, _ := buff.ReadBytes('s')
 	fmt.Println(buff.String())
 	fmt.Println(string(newbuff))
 
@@ -76,4 +75,5 @@ func makeBuff() {
 	var buffff bytes.Buffer
 	buffff.ReadFrom(file)
 	fmt.Println(buffff.String())
+
 }
