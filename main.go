@@ -2,27 +2,25 @@ package main
 
 import (
 	"fmt"
-	"jobworker/model"
+	"time"
 )
 
 func main() {
-	go model.Person1()
-	go model.Person2()
-	// go model.Person3()
-	test := make(chan string)
 
-	go func() {
-		fmt.Println("aaaaaaaaaa")
+	makeBuff()
+	deferCall()
+	<-time.After(time.Second * 10)
+}
 
-		fmt.Println("rountine 取值")
-		str := <-test
-		fmt.Println("取到值了：", str)
+func deferCall() {
+	defer func() {
+		fmt.Println("打印前")
 	}()
-	fmt.Println("bbbbbbbbbbbb")
-
-	test <- "hello"
-	fmt.Println("cccccccccc")
-
-	for {
-	}
+	defer func() {
+		fmt.Println("打印中")
+	}()
+	defer func() {
+		fmt.Println("打印后")
+	}()
+	panic("触发panic")
 }
