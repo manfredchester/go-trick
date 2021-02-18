@@ -25,6 +25,7 @@ func recuse(arr []string, str string) map[string]string {
 func main() {
 	// makeBuff()
 	// recuse([]string{"h1", "h2", "h3"}, "dsadh1:kihifailed=1kghyhjkdffyjh2:khjklhonefailed=3")
+	Pro()
 
 	// deferCall()
 	<-time.After(time.Second * 10)
